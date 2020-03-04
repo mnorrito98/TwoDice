@@ -17,7 +17,7 @@ public class TwoDiceGUI extends JFrame implements ActionListener
 	JLabel secondRoll = new JLabel("The Second Roll is");
 	JLabel result1 = new JLabel("");
 	JLabel result2 = new JLabel("");
-	
+	JLabel message = new JLabel(" ");
 
 	//Panels to combine first roll and results + second roll and results
 	//decided not to use because it was hiding the results 
@@ -26,7 +26,7 @@ public class TwoDiceGUI extends JFrame implements ActionListener
 
 	//Button to make all the magic happen
 	JButton letsRoll = new JButton("Let's Roll!");
-	JLabel message = new JLabel("");
+	
 
 
 	//Constructor for the GUI 
@@ -57,11 +57,13 @@ public class TwoDiceGUI extends JFrame implements ActionListener
 		title.setFont(bigFont);
 		subtitle.setFont(headlineFont);
 		//set size of button "letsRoll" + font and color 
-		letsRoll.setPreferredSize(new Dimension(350, 100));
+		//letsRoll.setPreferredSize(new Dimension(350, 100));
 		letsRoll.setFont(new Font("Arial", Font.PLAIN, 40));
 		letsRoll.setForeground(purple);
 		letsRoll.setBackground(Color.YELLOW);
-		message.setFont(bigFont);
+		
+		message.setFont(headlineFont);
+		message.setForeground(Color.WHITE);
 
 		//the dice 
 		firstRoll.setFont(diceFont);
@@ -84,6 +86,7 @@ public class TwoDiceGUI extends JFrame implements ActionListener
 		add(secondRoll);
 		add(result2);
 		add(letsRoll);
+		add(message);
 
 
 		//adding the action listener to the button now 
@@ -106,30 +109,30 @@ public class TwoDiceGUI extends JFrame implements ActionListener
 		// variables and constants
 		int value1 = firstDie.getValue();
 		int value2 = secondDie.getValue();
-		String msg;
+		String mess;
 		
 		// calculation phase
 		if(value1 == value2)
 		{
-			msg = "The dice are a match!";
+			mess = "The dice are a match!";
 		}
 		else
 		{
 			if(value1 > value2)
 			{
-				msg = "First die roll is greater.";
+				mess = "First die roll is greater.";
 			}
 			else
 			{
-				msg = "Second die roll is greater.";
+				mess = "Second die roll is greater.";
 			}
 		}
 		
 		// output phase
-		
+		message.setText("" + mess);
 		result1.setText(": " + value1);
 		result2.setText(": " + value2);
-		message.setText(msg);
+		
 	}
 
 
